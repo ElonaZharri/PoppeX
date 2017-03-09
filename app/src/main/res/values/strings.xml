@@ -1,3 +1,76 @@
 <resources>
     <string name="app_name">PoppeX</string>
+
+    <string name="caption_MA_textView_welcomeToMsu">ASK - SHARE - HELP</string>
+    <string name="caption_MA_register_button">Register</string>
+    <string name="caption_MA_signIn_button">Sign In</string>
+
+    <string name="caption_hint_SignIn_editText_userName">Enter unique username</string>
+    <string name="caption_hint_SignIn_editText_password">example@1</string>
+    <string name="caption_SignIn_textView_userName">Username: </string>
+    <string name="caption_SignIn_textView_password">Password: </string>
+    <string name="caption_SignIn_forgotPassword_button">Forgot password?</string>
+    <string name="caption_SignIn_logIn_button">Log In</string>
+    <string name="error_field_required">This field is required</string>
+
+
+    <string name="caption_Registration_textView_userName">Username</string>
+    <string name="caption_hint_Registration_editText_userName">Enter unique username</string>
+    <string name="caption_Registration_textView_name">Name</string>
+    <string name="caption_hint_Registration_editText_name">Enter your name</string>
+    <string name="caption_Registration_textView_major">Major</string>
+    <string name="caption_hint_Registration_editText_email">example@montclair.edu</string>
+    <string name="caption_hint_Registration_editText_DoB">mm/dd/yyyy</string>
+    <string name="caption_hint_Registration_editText_password1">Enter your password</string>
+    <string name="caption_hint_Registration_editText_password2">Confirm  password</string>
+    <string name="caption_Registration_button">Register</string>
+    <string name="caption_Registration_textView_email">Email</string>
+    <string name="caption_Registration_textView_dob">DOB</string>
+    <string name="caption_Registration_textView_password1">Password</string>
+    <string name="caption_Registration_textView_password2">Confirm Password</string>
+
+    <string name="caption_forgotPassword_textView">Password recovery</string>
+    <string name="caption_hint_forgotPassword_username">Username</string>
+    <string name="caption_hint_forgotPassword_email">example@montclair.edu</string>
+    <string name="caption_forgotPassword_submit_button">Submit</string>
+    <string name="caption_forgotPassword_textView_userName">Username</string>
+    <string name="caption_forgotPassword_textView_email">Email</string>
+
+    <string name="caption_landing_screen_textView">This account is for</string>
+
+    <string name="caption_displayPassword_textView">Your password is :</string>
+
+    <string name="caption_EditProfile_button">Update</string>
+    <string name="caption_hint_EditProfile_editText_DoB">mm/dd/yyyy</string>
+    <string name="caption_hint_EditProfile_editText_email">Update msu email</string>
+    <string name="caption_EditProfile_textView_major">Major</string>
+    <string name="caption_hint_EditProfile_editText_name">Update your name</string>
+    <string name="caption_EditProfile_textView_name">Name</string>
+    <string name="caption_hint_EditProfile_editText_userName">Enter new name</string>
+    <string name="caption_EditProfile_textView_email">Email</string>
+    <string name="caption_EditProfile_textView_dob">DOB</string>
+
+    <string name="log_out">Log Out</string>
+    <string name="caption_addANote_button">Add A NOTE</string>
+
+
+    <color name="white">#FFFFFF</color>
+
+
+    <string-array name="major_array">
+        <item>Accounting Major</item>
+        <item>Chemistry Major</item>
+        <item>Computer Science Major</item>
+        <item>Information Technology Major</item>
+        <item>Information Systems Major</item>
+        <item>Electronics Major</item>
+        <item>Marine Biology and Coastal Sciences Major</item>
+        <item>Mathematics Major</item>
+        <item>Physics Major</item>
+        <item>Sustainability Science Major</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
