@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "883520850052",
+    "firebase_url": "https://poppex-3314d.firebaseio.com",
+    "project_id": "poppex-3314d",
+    "storage_bucket": "poppex-3314d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883520850052:android:73aebda5f85d3250",
+        "android_client_info": {
+          "package_name": "com.example.android.poppex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "883520850052-2rrs6mchieqlfnc645kkv1r45t760m3s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9CKkdW_-iyygxoDtbQAWjRUp4wEU3Q84"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
