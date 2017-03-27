@@ -18,8 +18,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignUp" />
-        <activity android:name=".SignIn"/>
-        <activity android:name=".User"></activity>
+        <activity android:name=".SignIn" />
+        <activity android:name=".User" />
+        <activity
+            android:name=".UserProfileActivity"
+            android:label="@string/title_activity_user_profile"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

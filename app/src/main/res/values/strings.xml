@@ -57,33 +57,31 @@
     <color name="white">#FFFFFF</color>
 
 
-    <string-array name="major_array">
-        <item>Accounting Major</item>
-        <item>Chemistry Major</item>
-        <item>Computer Science Major</item>
-        <item>Information Technology Major</item>
-        <item>Information Systems Major</item>
-        <item>Electronics Major</item>
-        <item>Marine Biology and Coastal Sciences Major</item>
-        <item>Mathematics Major</item>
-        <item>Physics Major</item>
-        <item>Sustainability Science Major</item>
+    <string-array name="role_array">
+        <item>Student</item>
+        <item>Professor</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--Firebase-->
-    <string  name="minimum_password">Password too short, enter minimum 6 characters!</string>
-    <string  name="auth_failed">Authentication error, Please enter a valid email and password or sign up</string>
-    <string  name="hint_email">Email</string>
-    <string  name="hint_password">Password</string>
-    <string  name="btn_login">LOGIN</string>
-    <string  name="btn_link_to_login">Already registered. Login !!</string>
-    <string  name="btn_sign_out">Sign Out</string>
+    <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
+    <string name="auth_failed">Authentication error, Please enter a valid email and password or sign up</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_link_to_login">Already registered. Login !!</string>
+    <string name="btn_sign_out">Sign Out</string>
     <string name="btn_sign_up">Sign Up !!</string>
     <string name="err_msg_email">Enter a valid email.</string>
     <string name="err_msg_required">Required !!</string>
     <string name="err_msg_password">Enter a valid password with min 6 characters.</string>
     <string name="btn_link_to_signup">Don\'t have an account, Signup !!</string>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
