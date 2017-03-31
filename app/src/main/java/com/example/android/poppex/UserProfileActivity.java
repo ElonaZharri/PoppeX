@@ -1,10 +1,15 @@
 package com.example.android.poppex;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.TypedValue;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,13 +23,24 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class UserProfileActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, DeletionListener {
 
     private TextView userEmail;
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
+    DatabaseReference database;
+    AskQuestionRecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +50,7 @@ public class UserProfileActivity extends AppCompatActivity
         //get firebase auth instance
         auth = FirebaseAuth.getInstance();
 
-        userEmail = (TextView)findViewById(R.id.userEmail);
+        userEmail = (TextView) findViewById(R.id.userEmail);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -65,10 +81,30 @@ public class UserProfileActivity extends AppCompatActivity
                     startActivity(new Intent(UserProfileActivity.this, SignIn.class));
                     finish();
                 } else {
-                   // userEmail.setText(user.getEmail());
+                    // userEmail.setText(user.getEmail());
                 }
             }
         };
+
+        //get Database Instance
+        database = FirebaseDatabase.getInstance().getReference();
+        adapter = new AskQuestionRecyclerViewAdapter(Collections.<AskQuestion>emptyList());
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        final int offset = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16, getResources().getDisplayMetrics());
+        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                if (parent.getChildAdapterPosition(view) != parent.getAdapter().getItemCount() - 1) {
+                    outRect.bottom = offset;
+                }
+            }
+        });
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(
+                new PostedQuestionTouchHelperCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT, UserProfileActivity.this));
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
@@ -129,7 +165,25 @@ public class UserProfileActivity extends AppCompatActivity
 
     @Override
     protected void onResume() {
+
         super.onResume();
+
+        database.child("questions").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<AskQuestion> askQuestions = new ArrayList<>();
+                for (DataSnapshot askQuestionDataSnapshot : dataSnapshot.getChildren()) {
+                    AskQuestion askQuestion = askQuestionDataSnapshot.getValue(AskQuestion.class);
+                    askQuestions.add(askQuestion);
+                }
+                adapter.updateList(askQuestions);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -148,5 +202,12 @@ public class UserProfileActivity extends AppCompatActivity
 
     public void onLogOutClick(MenuItem item) {
         auth.signOut();
+    }
+
+    @Override
+    public void itemRemoved(int adapterPosition) {
+        AskQuestion askQuestion = adapter.getItem(adapterPosition);
+        adapter.removeItem(adapterPosition);
+        database.child("questions").child(askQuestion.getUserId()).removeValue();
     }
 }
